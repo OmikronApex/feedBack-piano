@@ -1,6 +1,6 @@
 # feedBack Piano
 
-A lightweight JUCE 8 VST3 sampler plugin built for the [slopsmith](https://github.com/OmikronApex) feedback-plugin-jamsession project. Loads Salamander Grand Piano samples from the VST3 bundle's `Contents/Resources/Salamander/` folder and makes them available as a serial-chain-safe instrument.
+A lightweight JUCE 8 VST3 sampler plugin built for [feedBack](https://github.com/slopsmith/slopsmith-desktop). Loads Salamander Grand Piano samples from the VST3 bundle's `Contents/Resources/Salamander/` folder and makes them available as a serial-chain-safe instrument.
 
 ## Features
 
