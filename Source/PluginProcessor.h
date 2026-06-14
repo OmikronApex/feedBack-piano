@@ -1,11 +1,11 @@
 #pragma once
 #include <JuceHeader.h>
 
-class SlopsmithPianoProcessor : public juce::AudioProcessor
+class FeedBackPianoProcessor : public juce::AudioProcessor
 {
 public:
-    SlopsmithPianoProcessor();
-    ~SlopsmithPianoProcessor() override;
+    FeedBackPianoProcessor();
+    ~FeedBackPianoProcessor() override;
 
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -15,7 +15,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return false; }
 
-    const juce::String getName() const override { return "Slopsmith Piano"; }
+    const juce::String getName() const override { return "feedBack Piano"; }
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
     bool isMidiEffect() const override { return false; }
@@ -36,5 +36,5 @@ private:
 
     void loadSamples();
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SlopsmithPianoProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FeedBackPianoProcessor)
 };

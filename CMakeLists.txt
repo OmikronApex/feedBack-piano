@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(slopsmith-piano VERSION 1.0.0)
+project(feedback-piano VERSION 1.0.0)
 
 set(JUCE_PATH "C:/Users/rkasp/PycharmProjects/slopsmith-desktop/JUCE" CACHE PATH "Path to JUCE" FORCE)
 if(NOT EXISTS "${JUCE_PATH}/CMakeLists.txt")
@@ -7,12 +7,12 @@ if(NOT EXISTS "${JUCE_PATH}/CMakeLists.txt")
 endif()
 add_subdirectory("${JUCE_PATH}" "${CMAKE_BINARY_DIR}/JUCE" EXCLUDE_FROM_ALL)
 
-juce_add_plugin(slopsmith-piano
-    COMPANY_NAME "Slopsmith"
-    PLUGIN_MANUFACTURER_CODE Slop
-    PLUGIN_CODE Spno
+juce_add_plugin(feedback-piano
+    COMPANY_NAME "feedBack"
+    PLUGIN_MANUFACTURER_CODE Fbck
+    PLUGIN_CODE Fpno
     FORMATS VST3
-    PRODUCT_NAME "Slopsmith Piano"
+    PRODUCT_NAME "feedBack Piano"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
@@ -21,20 +21,20 @@ juce_add_plugin(slopsmith-piano
     VST3_CATEGORIES "Instrument" "Sampler"
 )
 
-juce_generate_juce_header(slopsmith-piano)
+juce_generate_juce_header(feedback-piano)
 
-target_sources(slopsmith-piano PRIVATE
+target_sources(feedback-piano PRIVATE
     Source/PluginProcessor.cpp
 )
 
-target_compile_definitions(slopsmith-piano PUBLIC
+target_compile_definitions(feedback-piano PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
     JUCE_USE_FLAC=1
 )
 
-target_link_libraries(slopsmith-piano PRIVATE
+target_link_libraries(feedback-piano PRIVATE
     juce::juce_audio_utils
     juce::juce_audio_plugin_client
     juce::juce_audio_processors

@@ -20,17 +20,17 @@ cmake -B build -G "Visual Studio 17 2022" -A x64
 cmake --build build --config Release
 ```
 
-The built VST3 is at `build/slopsmith-piano_artefacts/Release/VST3/Slopsmith Piano.vst3`.
+The built VST3 is at `build/feedback-piano_artefacts/Release/VST3/feedBack Piano.vst3`.
 
 ### Adding samples
 
 Copy the v1 velocity layer FLAC files from Salamander Grand Piano into the bundle:
 
 ```
-Slopsmith Piano.vst3/
+feedBack Piano.vst3/
   Contents/
     x86_64-win/
-      Slopsmith Piano.vst3
+      feedBack Piano.vst3
     Resources/
       Salamander/
         A0v1.flac

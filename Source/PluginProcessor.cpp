@@ -36,7 +36,7 @@ static const SampleEntry kSamples[] = {
     { "C8v1.flac",  108, 107, 108 },
 };
 
-SlopsmithPianoProcessor::SlopsmithPianoProcessor()
+FeedBackPianoProcessor::FeedBackPianoProcessor()
     : AudioProcessor(BusesProperties()
         .withInput ("Input",  juce::AudioChannelSet::stereo(), true)
         .withOutput("Output", juce::AudioChannelSet::stereo(), true))
@@ -44,9 +44,9 @@ SlopsmithPianoProcessor::SlopsmithPianoProcessor()
     formatManager.registerBasicFormats();
 }
 
-SlopsmithPianoProcessor::~SlopsmithPianoProcessor() {}
+FeedBackPianoProcessor::~FeedBackPianoProcessor() {}
 
-void SlopsmithPianoProcessor::loadSamples()
+void FeedBackPianoProcessor::loadSamples()
 {
     sampler.clearVoices();
     sampler.clearSounds();
@@ -82,28 +82,28 @@ void SlopsmithPianoProcessor::loadSamples()
     }
 }
 
-void SlopsmithPianoProcessor::prepareToPlay(double sampleRate, int)
+void FeedBackPianoProcessor::prepareToPlay(double sampleRate, int)
 {
     sampler.setCurrentPlaybackSampleRate(sampleRate);
     loadSamples();
 }
 
-void SlopsmithPianoProcessor::releaseResources() {}
+void FeedBackPianoProcessor::releaseResources() {}
 
-bool SlopsmithPianoProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+bool FeedBackPianoProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 {
     return layouts.getMainOutputChannelSet() == juce::AudioChannelSet::stereo();
 }
 
-void SlopsmithPianoProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi)
+void FeedBackPianoProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi)
 {
     // renderNextBlock ADDS to buffer — serial chain safe, no clear needed
     sampler.renderNextBlock(buffer, midi, 0, buffer.getNumSamples());
 }
 
-juce::AudioProcessorEditor* SlopsmithPianoProcessor::createEditor() { return nullptr; }
+juce::AudioProcessorEditor* FeedBackPianoProcessor::createEditor() { return nullptr; }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new SlopsmithPianoProcessor();
+    return new FeedBackPianoProcessor();
 }
